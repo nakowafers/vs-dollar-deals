@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vitamin Shoppe $1 Dollar Deals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #07030e;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .font-synth {
+      font-family: 'Orbitron', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Outrun Synthwave Glows */
+    .glow-magenta {
+      text-shadow: 0 0 10px #ff007f, 0 0 25px rgba(255, 0, 127, 0.65);
+    }
+    .glow-amber {
+      text-shadow: 0 0 10px #ffb703, 0 0 25px rgba(255, 183, 3, 0.65);
+    }
+    .glow-cyan {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.5);
+    }
+
+    .border-glow-magenta {
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 20px rgba(255, 0, 127, 0.12);
+    }
+
+    /* Animated Perspective Grid Floor */
+    .grid-perspective {
+      background-image: 
+        linear-gradient(to right, rgba(255, 0, 127, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  </style>
+</head>
+<body class="text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-fuchsia-500 selection:text-white">
+
+  <!-- Main Synthwave Mobile Card -->
+  <main class="w-full max-w-sm mx-auto">
+    <div class="grid-perspective bg-gradient-to-b from-[#19092c] via-[#0d0519] to-[#040108] border-2 border-fuchsia-500/90 border-glow-magenta rounded-3xl p-6 font-synth text-white space-y-6 shadow-2xl relative overflow-hidden">
+      
+      <!-- Top Status Header -->
+      <div class="flex justify-between items-center text-[11px] tracking-widest uppercase border-b border-fuchsia-500/30 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping"></span>
+          <span class="text-fuchsia-400 glow-magenta font-bold">★ WEEKEND DROP ★</span>
+        </div>
+        <span id="dealDatesBadge" class="text-amber-400 glow-amber font-mono font-bold">THU–SUN</span>
+      </div>
+
+      <!-- Main Featured Product Heading -->
+      <div class="text-center space-y-1 pt-1">
+        <p class="text-[10px] text-fuchsia-300 tracking-widest uppercase font-mono">THE VITAMIN SHOPPE</p>
+        <h1 id="brandName" class="text-3xl sm:text-4xl font-black italic tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-fuchsia-400 to-cyan-300 drop-shadow-[0_0_18px_rgba(255,0,127,0.7)] leading-tight">
+          JOCKO GO
+        </h1>
+        <p id="productSubtitle" class="text-xs text-cyan-300 font-sans tracking-wide font-medium">
+          Clean Energy & Focus Drink (12 oz)
+        </p>
+      </div>
+
+      <!-- Large Neon Price Box -->
+      <div class="text-center py-1">
+        <div class="inline-block bg-gradient-to-tr from-fuchsia-600 via-amber-500 to-cyan-400 p-0.5 rounded-2xl shadow-[0_0_35px_rgba(255,0,127,0.5)]">
+          <div class="bg-black/90 px-8 py-3.5 rounded-2xl">
+            <span id="dealPrice" class="text-6xl font-black text-amber-300 glow-amber tracking-tighter leading-none">$1.00</span>
+            <span id="dealLimitText" class="block text-[10px] text-fuchsia-300 font-mono tracking-widest uppercase mt-1">PER CAN • LIMIT 6 / DAY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details & Companion Deal -->
+      <div class="space-y-2 text-xs font-mono">
+        <div class="bg-fuchsia-950/40 border border-fuchsia-500/30 rounded-xl p-3 flex justify-between items-center text-cyan-300">
+          <span id="companionText">🥛 Jocko Molk RTD Shake</span>
+          <span class="text-amber-300 font-bold">$2.00</span>
+        </div>
+        <div class="flex justify-between px-1 text-[11px] text-slate-400">
+          <span>REGULAR VALUE: $2.99</span>
+          <span class="text-emerald-400 font-bold">SAVE $1.99 / CAN</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="space-y-2 pt-1 font-sans">
+        <a id="findStoreLink" href="https://www.vitaminshoppe.com/search?search=Jocko%20Go%20Energy%20Drink" target="_blank" class="w-full bg-gradient-to-r from-fuchsia-600 to-amber-500 hover:from-fuchsia-500 hover:to-amber-400 text-black font-extrabold text-xs py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-500/25 uppercase tracking-wider">
+          <span>Find in Store / Online</span>
+          <span>↗</span>
+        </a>
+        
+        <button id="copyShareBtn" class="w-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs py-2.5 rounded-xl transition font-mono flex items-center justify-center gap-1.5">
+          <span id="copyBtnLabel">📋 Copy Deal to Share</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Live Data Hydration Script -->
+  <script>
+    // Hydrate from deals.json if available
+    async function loadDealsData() {
+      try {
+        const res = await fetch('deals.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && data.deals && data.deals.length > 0) {
+          const primary = data.deals[0];
+          const productName = primary.product_name || `${primary.brand} Energy Drink`;
+          
+          document.getElementById('brandName').innerText = primary.brand || 'JOCKO GO';
+          document.getElementById('productSubtitle').innerText = productName;
+          document.getElementById('dealPrice').innerText = primary.deal_price || '$1.00';
+          if (primary.limit) document.getElementById('dealLimitText').innerText = `PER CAN • ${primary.limit.toUpperCase()}`;
+          if (primary.deal_dates) document.getElementById('dealDatesBadge').innerText = primary.deal_dates;
+
+          // Update Find in Store Search Link with URL-friendly product_name
+          const searchUrl = `https://www.vitaminshoppe.com/search?search=${encodeURIComponent(productName)}`;
+          document.getElementById('findStoreLink').href = searchUrl;
+
+          // Companion deal if exists
+          if (data.deals.length > 1) {
+            const secondary = data.deals[1];
+            document.getElementById('companionText').innerText = `🥛 ${secondary.product_name || secondary.brand}`;
+          }
+        }
+      } catch (e) {
+        console.log("Using default preset deal data.");
+      }
+    }
+
+    // Share deal button
+    document.getElementById('copyShareBtn').addEventListener('click', () => {
+      const brand = document.getElementById('brandName').innerText;
+      const price = document.getElementById('dealPrice').innerText;
+      const text = `The Vitamin Shoppe $1 Weekend Deal: ${brand} for ${price}! (Limit 6)`;
+      navigator.clipboard.writeText(text).then(() => {
+        const label = document.getElementById('copyBtnLabel');
+        label.innerText = '✓ Copied to Clipboard!';
+        setTimeout(() => { label.innerText = '📋 Copy Deal to Share'; }, 2000);
+      });
+    });
+
+    loadDealsData();
+  </script>
+</body>
+</html>

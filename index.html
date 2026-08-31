@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -21,35 +21,73 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Outrun Synthwave Glows */
-    .glow-magenta {
-      text-shadow: 0 0 10px #ff007f, 0 0 25px rgba(255, 0, 127, 0.65);
+    :root {
+      --bg-primary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-color: #e5e7eb;
     }
-    .glow-amber {
-      text-shadow: 0 0 10px #ffb703, 0 0 25px rgba(255, 183, 3, 0.65);
-    }
-    .glow-cyan {
-      text-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.5);
+    .dark {
+      --bg-primary: #07030e;
+      --bg-card: transparent;
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --border-color: rgba(236, 72, 153, 0.3);
     }
 
-    .border-glow-magenta {
-      box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 20px rgba(255, 0, 127, 0.12);
-    }
+    .dark {
+      /* Outrun Synthwave Glows */
+      .glow-magenta {
+        text-shadow: 0 0 10px #ff007f, 0 0 25px rgba(255, 0, 127, 0.65);
+      }
+      .glow-amber {
+        text-shadow: 0 0 10px #ffb703, 0 0 25px rgba(255, 183, 3, 0.65);
+      }
+      .glow-cyan {
+        text-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.5);
+      }
 
-    /* Animated Perspective Grid Floor */
-    .grid-perspective {
-      background-image: 
-        linear-gradient(to right, rgba(255, 0, 127, 0.15) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px);
-      background-size: 28px 28px;
+      .border-glow-magenta {
+        box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 20px rgba(255, 0, 127, 0.12);
+      }
+
+      /* Animated Perspective Grid Floor */
+      .grid-perspective {
+        background-image: 
+          linear-gradient(to right, rgba(255, 0, 127, 0.15) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
     }
   </style>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
 </head>
-<body class="text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-fuchsia-500 selection:text-white">
+<body class="bg-white dark:bg-[#07030e] text-gray-900 dark:text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-fuchsia-500 selection:text-white">
+
+<!-- Theme Toggle Button -->
+<button id="themeToggle" aria-label="Toggle dark mode" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-gray-200/80 dark:bg-white/10 backdrop-blur-md border border-gray-300 dark:border-white/20 flex items-center justify-center hover:bg-gray-300/80 dark:hover:bg-white/20 transition-colors shadow-lg">
+  <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-amber-500 hidden dark:block">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+  <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gray-700 block dark:hidden">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
 
   <!-- Main Synthwave Mobile Card -->
   <main class="w-full max-w-sm mx-auto">
-    <div class="grid-perspective bg-gradient-to-b from-[#19092c] via-[#0d0519] to-[#040108] border-2 border-fuchsia-500/90 border-glow-magenta rounded-3xl p-6 font-synth text-white space-y-6 shadow-2xl relative overflow-hidden">
+    <div class="grid-perspective bg-white dark:bg-gradient-to-b dark:from-[#19092c] dark:via-[#0d0519] dark:to-[#040108] border-2 border-gray-200 dark:border-fuchsia-500/90 border-glow-magenta rounded-3xl p-6 font-synth text-gray-900 dark:text-white space-y-6 shadow-2xl relative overflow-hidden">
       
       <!-- Top Status Header -->
       <div class="flex justify-between items-center text-[11px] tracking-widest uppercase border-b border-fuchsia-500/30 pb-3">
@@ -152,6 +190,28 @@
         setTimeout(() => { label.innerText = '📋 Copy Deal to Share'; }, 2000);
       });
     });
+
+    // Theme Toggle
+    (function() {
+      const html = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+
+      function setTheme(dark) {
+        html.classList.toggle('dark', dark);
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      }
+
+      // Initialize theme from localStorage or system preference
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(saved ? saved === 'dark' : prefersDark);
+
+      toggle.addEventListener('click', () => {
+        setTheme(!html.classList.contains('dark'));
+      });
+    })();
 
     loadDealsData();
   </script>

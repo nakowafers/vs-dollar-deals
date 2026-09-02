@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vitamin Shoppe $1 Dollar Deals</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,6 +256,11 @@
       background: #c0c0c0;
       font-weight: 500;
     }
+
+    .btn:focus-visible, .mac-btn:focus-visible {
+      outline: 2px solid #000080;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -263,7 +268,7 @@
   <main class="mac-window">
     <div class="mac-titlebar">
       <span class="mac-titlebar-text">$1 Dollar Deals</span>
-      <div class="mac-buttons">
+      <div class="mac-buttons" aria-hidden="true">
         <span class="mac-btn">−</span>
         <span class="mac-btn">□</span>
         <span class="mac-btn">×</span>
@@ -365,6 +370,8 @@
         const label = document.getElementById('copyBtnLabel');
         label.innerText = '✓ Copied to Clipboard!';
         setTimeout(() => { label.innerText = '📋 Copy Deal to Share'; }, 2000);
+      }).catch(() => {
+        alert('Copy this deal: ' + text);
       });
     });
 

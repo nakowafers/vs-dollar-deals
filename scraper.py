@@ -104,20 +104,45 @@ def direct_scrape_deals() -> dict:
         primary_brand = brand_match.group(1).strip()
         primary_name = f"{primary_brand} Energy Drink (12oz)"
 
-    # Extract product image URL from promo section
+    # Extract product image URL from promo section (scop nearby promo text)
     image_url = None
-    # Look for img tags near the promo text
-    img_match = re.search(
-        r'<img[^>]+src=["\']([^"\']+)["\'][^>]*(?:alt=["\'][^"\']*(?:' + re.escape(primary_brand) + r'|energy|drink)[^"\']*["\'])?[^>]*>',
-        html,
+    search_radius = 500
+    window_start = max(0, promo_match.start() - search_radius)
+    window_end = min(len(html), promo_match.end() + search_radius)
+    promo_window = html[window_start:window_end]
+
+    # Simplified regex: match any <img> with src, attribute order independent
+    img_matches = re.finditer(
+        r'<img[^>]+\bsrc=["\']([^"\']+)["\'][^>]*>',
+        promo_window,
         re.IGNORECASE
     )
-    if img_match:
+    for img_match in img_matches:
         img_src = img_match.group(1)
-        # Handle relative URLs
-        if img_src.startswith('/'):
-            img_src = 'https://locations.vitaminshoppe.com' + img_src
-        image_url = img_src
+        # Check if the src URL looks like a product image (contains brand or drink keywords)
+        src_lower = img_src.lower()
+        if (primary_brand.lower() in src_lower or
+            'energy' in src_lower or
+            'drink' in src_lower or
+            'jocko' in src_lower or
+            'molk' in src_lower):
+            if img_src.startswith('/'):
+                img_src = 'https://locations.vitaminshoppe.com' + img_src
+            image_url = img_src
+            break
+
+    # Fallback: if no keyword match, grab first img in the promo window
+    if not image_url:
+        img_match = re.search(
+            r'<img[^>]+\bsrc=["\']([^"\']+)["\'][^>]*>',
+            promo_window,
+            re.IGNORECASE
+        )
+        if img_match:
+            img_src = img_match.group(1)
+            if img_src.startswith('/'):
+                img_src = 'https://locations.vitaminshoppe.com' + img_src
+            image_url = img_src
 
     deals = [
         {

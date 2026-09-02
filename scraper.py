@@ -46,6 +46,10 @@ DEALS_SCHEMA = {
                     "details": {
                         "type": "string",
                         "description": "Any additional promo details"
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "description": "URL to the product image from the Vitamin Shoppe website"
                     }
                 },
                 "required": ["brand", "deal_price"]

@@ -1,154 +1,319 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Vitamin Shoppe $1 Dollar Deals</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      background-color: #07030e;
-      font-family: 'Rajdhani', sans-serif;
-    }
-    .font-synth {
-      font-family: 'Orbitron', sans-serif;
-    }
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    :root {
-      --bg-primary: #ffffff;
-      --bg-card: #ffffff;
-      --text-primary: #111827;
-      --text-secondary: #6b7280;
-      --border-color: #e5e7eb;
-    }
-    .dark {
-      --bg-primary: #07030e;
-      --bg-card: transparent;
-      --text-primary: #f4f4f5;
-      --text-secondary: #a1a1aa;
-      --border-color: rgba(236, 72, 153, 0.3);
+      background-color: #d4d0c8;
+      font-family: 'Geneva', 'Verdana', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
     }
 
-    .dark {
-      /* Outrun Synthwave Glows */
-      .glow-magenta {
-        text-shadow: 0 0 10px #ff007f, 0 0 25px rgba(255, 0, 127, 0.65);
-      }
-      .glow-amber {
-        text-shadow: 0 0 10px #ffb703, 0 0 25px rgba(255, 183, 3, 0.65);
-      }
-      .glow-cyan {
-        text-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.5);
-      }
+    .mac-window {
+      width: 100%;
+      max-width: 340px;
+      border: 2px solid #000;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+    }
 
-      .border-glow-magenta {
-        box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 20px rgba(255, 0, 127, 0.12);
-      }
+    .mac-titlebar {
+      background: linear-gradient(to right, #000080, #1084d0);
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #000;
+    }
 
-      /* Animated Perspective Grid Floor */
-      .grid-perspective {
-        background-image: 
-          linear-gradient(to right, rgba(255, 0, 127, 0.15) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(0, 240, 255, 0.15) 1px, transparent 1px);
-        background-size: 28px 28px;
-      }
+    .mac-titlebar-text {
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .mac-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .mac-btn {
+      width: 14px;
+      height: 14px;
+      background: #c0c0c0;
+      border: 1px solid #808080;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #000;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 0 #fff;
+    }
+
+    .mac-card {
+      background: white;
+      border: 2px solid #808080;
+      border-top: none;
+      padding: 20px;
+      box-shadow: inset 1px 1px 0 #dfdfdf;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .header-badge {
+      color: #000080;
+      font-weight: bold;
+    }
+
+    .header-date {
+      color: #804000;
+      font-weight: bold;
+    }
+
+    .product-image-container {
+      background: #f5f5f5;
+      border: 2px solid #808080;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: inset 1px 1px 0 #fff;
+      text-align: center;
+    }
+
+    .product-image {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      border: 1px dashed #808080;
+      border-radius: 4px;
+      background: #e8e8e8;
+    }
+
+    .product-image-placeholder {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+      border: 1px dashed #808080;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .brand-block {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .brand-label {
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .brand-name {
+      font-size: 32px;
+      font-weight: 900;
+      color: #000;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .product-subtitle {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .price-container {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .price-frame {
+      display: inline-block;
+      background: #c0c0c0;
+      border: 2px solid #808080;
+      border-radius: 4px;
+      padding: 3px;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #404040;
+    }
+
+    .price-inner {
+      background: white;
+      padding: 12px 32px;
+      border: 1px solid #808080;
+      border-radius: 2px;
+    }
+
+    .price-amount {
+      font-size: 48px;
+      font-weight: 900;
+      color: #000080;
+      line-height: 1;
+    }
+
+    .price-limit {
+      display: block;
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      margin-top: 4px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .companion-deal {
+      background: #f0f0f0;
+      border: 2px solid #808080;
+      border-radius: 4px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      box-shadow: inset 1px 1px 0 #fff;
+    }
+
+    .companion-name {
+      font-size: 13px;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .companion-price {
+      color: #000080;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #c0c0c0;
+      color: #000;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 14px;
+      border: 2px solid #808080;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      min-height: 44px;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #404040;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .btn:hover {
+      background: #d0d0d0;
+    }
+
+    .btn:active {
+      box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #404040;
+    }
+
+    .btn-secondary {
+      background: #c0c0c0;
+      font-weight: 500;
     }
   </style>
-  <script>
-    tailwind.config = { darkMode: 'class' }
-  </script>
 </head>
-<body class="bg-white dark:bg-[#07030e] text-gray-900 dark:text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-fuchsia-500 selection:text-white">
+<body>
 
-<!-- Theme Toggle Button -->
-<button id="themeToggle" aria-label="Toggle dark mode" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-gray-200/80 dark:bg-white/10 backdrop-blur-md border border-gray-300 dark:border-white/20 flex items-center justify-center hover:bg-gray-300/80 dark:hover:bg-white/20 transition-colors shadow-lg">
-  <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-amber-500 hidden dark:block">
-    <circle cx="12" cy="12" r="5"/>
-    <line x1="12" y1="1" x2="12" y2="3"/>
-    <line x1="12" y1="21" x2="12" y2="23"/>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-    <line x1="1" y1="12" x2="3" y2="12"/>
-    <line x1="21" y1="12" x2="23" y2="12"/>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-  </svg>
-  <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gray-700 block dark:hidden">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-  </svg>
-</button>
+  <main class="mac-window">
+    <div class="mac-titlebar">
+      <span class="mac-titlebar-text">$1 Dollar Deals</span>
+      <div class="mac-buttons">
+        <span class="mac-btn">−</span>
+        <span class="mac-btn">□</span>
+        <span class="mac-btn">×</span>
+      </div>
+    </div>
 
-  <!-- Main Synthwave Mobile Card -->
-  <main class="w-full max-w-sm mx-auto">
-    <div class="grid-perspective bg-white dark:bg-gradient-to-b dark:from-[#19092c] dark:via-[#0d0519] dark:to-[#040108] border-2 border-gray-200 dark:border-fuchsia-500/90 border-glow-magenta rounded-3xl p-6 font-synth text-gray-900 dark:text-white space-y-6 shadow-2xl relative overflow-hidden">
-      
-      <!-- Top Status Header -->
-      <div class="flex justify-between items-center text-[11px] tracking-widest uppercase border-b border-fuchsia-500/30 pb-3">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping"></span>
-          <span class="text-fuchsia-400 glow-magenta font-bold">★ WEEKEND DROP ★</span>
-        </div>
-        <span id="dealDatesBadge" class="text-amber-400 glow-amber font-mono font-bold">THU–SUN</span>
+    <div class="mac-card">
+      <div class="card-header">
+        <span class="header-badge">★ WEEKEND DROP ★</span>
+        <span id="dealDatesBadge" class="header-date">THU–SUN</span>
       </div>
 
-      <!-- Main Featured Product Heading -->
-      <div class="text-center space-y-1 pt-1">
-        <p class="text-[10px] text-fuchsia-300 tracking-widest uppercase font-mono">THE VITAMIN SHOPPE</p>
-        <h1 id="brandName" class="text-3xl sm:text-4xl font-black italic tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-fuchsia-400 to-cyan-300 drop-shadow-[0_0_18px_rgba(255,0,127,0.7)] leading-tight">
-          JOCKO GO
-        </h1>
-        <p id="productSubtitle" class="text-xs text-cyan-300 font-sans tracking-wide font-medium">
-          Clean Energy & Focus Drink (12 oz)
-        </p>
+      <div class="product-image-container">
+        <img id="productImage" class="product-image" src="" alt="Product image" style="display: none;">
+        <div id="productImagePlaceholder" class="product-image-placeholder">[ Product Image ]</div>
       </div>
 
-      <!-- Large Neon Price Box -->
-      <div class="text-center py-1">
-        <div class="inline-block bg-gradient-to-tr from-fuchsia-600 via-amber-500 to-cyan-400 p-0.5 rounded-2xl shadow-[0_0_35px_rgba(255,0,127,0.5)]">
-          <div class="bg-black/90 px-8 py-3.5 rounded-2xl">
-            <span id="dealPrice" class="text-6xl font-black text-amber-300 glow-amber tracking-tighter leading-none">$1.00</span>
-            <span id="dealLimitText" class="block text-[10px] text-fuchsia-300 font-mono tracking-widest uppercase mt-1">PER CAN • LIMIT 6 / DAY</span>
+      <div class="brand-block">
+        <p class="brand-label">THE VITAMIN SHOPPE</p>
+        <h1 id="brandName" class="brand-name">JOCKO GO</h1>
+        <p id="productSubtitle" class="product-subtitle">Clean Energy & Focus Drink (12 oz)</p>
+      </div>
+
+      <div class="price-container">
+        <div class="price-frame">
+          <div class="price-inner">
+            <span id="dealPrice" class="price-amount">$1.00</span>
+            <span id="dealLimitText" class="price-limit">PER CAN · LIMIT 6 / DAY</span>
           </div>
         </div>
       </div>
 
-      <!-- Details & Companion Deal -->
-      <div class="space-y-2 text-xs font-mono">
-        <div class="bg-fuchsia-950/40 border border-fuchsia-500/30 rounded-xl p-3 flex justify-between items-center text-cyan-300">
-          <span id="companionText">🥛 Jocko Molk RTD Shake</span>
-          <span class="text-amber-300 font-bold">$2.00</span>
-        </div>
-        <div class="flex justify-between px-1 text-[11px] text-slate-400">
-          <span>REGULAR VALUE: $2.99</span>
-          <span class="text-emerald-400 font-bold">SAVE $1.99 / CAN</span>
-        </div>
+      <div class="companion-deal">
+        <span id="companionText" class="companion-name">🥛 Jocko Molk RTD Shake</span>
+        <span class="companion-price">$2.00</span>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="space-y-2 pt-1 font-sans">
-        <a id="findStoreLink" href="https://www.vitaminshoppe.com/search?search=Jocko%20Go%20Energy%20Drink" target="_blank" class="w-full bg-gradient-to-r from-fuchsia-600 to-amber-500 hover:from-fuchsia-500 hover:to-amber-400 text-black font-extrabold text-xs py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-500/25 uppercase tracking-wider">
+      <div class="actions">
+        <a id="findStoreLink" href="https://www.vitaminshoppe.com/search?search=Jocko%20Go%20Energy%20Drink" target="_blank" class="btn">
           <span>Find in Store / Online</span>
           <span>↗</span>
         </a>
-        
-        <button id="copyShareBtn" class="w-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs py-2.5 rounded-xl transition font-mono flex items-center justify-center gap-1.5">
+        <button id="copyShareBtn" class="btn btn-secondary">
           <span id="copyBtnLabel">📋 Copy Deal to Share</span>
         </button>
       </div>
-
     </div>
   </main>
 
-  <!-- Live Data Hydration Script -->
   <script>
-    // Hydrate from deals.json if available
     async function loadDealsData() {
       try {
         const res = await fetch('deals.json');
@@ -161,14 +326,27 @@
           document.getElementById('brandName').innerText = primary.brand || 'JOCKO GO';
           document.getElementById('productSubtitle').innerText = productName;
           document.getElementById('dealPrice').innerText = primary.deal_price || '$1.00';
-          if (primary.limit) document.getElementById('dealLimitText').innerText = `PER CAN • ${primary.limit.toUpperCase()}`;
+          if (primary.limit) document.getElementById('dealLimitText').innerText = `PER CAN · ${primary.limit.toUpperCase()}`;
           if (primary.deal_dates) document.getElementById('dealDatesBadge').innerText = primary.deal_dates;
 
-          // Update Find in Store Search Link with URL-friendly product_name
           const searchUrl = `https://www.vitaminshoppe.com/search?search=${encodeURIComponent(productName)}`;
           document.getElementById('findStoreLink').href = searchUrl;
 
-          // Companion deal if exists
+          const img = document.getElementById('productImage');
+          const placeholder = document.getElementById('productImagePlaceholder');
+          if (primary.image_url) {
+            img.src = primary.image_url;
+            img.alt = `${primary.brand} product image`;
+            img.onload = function() {
+              img.style.display = 'block';
+              placeholder.style.display = 'none';
+            };
+            img.onerror = function() {
+              img.style.display = 'none';
+              placeholder.style.display = 'flex';
+            };
+          }
+
           if (data.deals.length > 1) {
             const secondary = data.deals[1];
             document.getElementById('companionText').innerText = `🥛 ${secondary.product_name || secondary.brand}`;
@@ -179,7 +357,6 @@
       }
     }
 
-    // Share deal button
     document.getElementById('copyShareBtn').addEventListener('click', () => {
       const brand = document.getElementById('brandName').innerText;
       const price = document.getElementById('dealPrice').innerText;
@@ -190,28 +367,6 @@
         setTimeout(() => { label.innerText = '📋 Copy Deal to Share'; }, 2000);
       });
     });
-
-    // Theme Toggle
-    (function() {
-      const html = document.documentElement;
-      const toggle = document.getElementById('themeToggle');
-      const sunIcon = document.getElementById('sunIcon');
-      const moonIcon = document.getElementById('moonIcon');
-
-      function setTheme(dark) {
-        html.classList.toggle('dark', dark);
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
-      }
-
-      // Initialize theme from localStorage or system preference
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(saved ? saved === 'dark' : prefersDark);
-
-      toggle.addEventListener('click', () => {
-        setTheme(!html.classList.contains('dark'));
-      });
-    })();
 
     loadDealsData();
   </script>

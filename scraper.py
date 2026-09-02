@@ -104,6 +104,21 @@ def direct_scrape_deals() -> dict:
         primary_brand = brand_match.group(1).strip()
         primary_name = f"{primary_brand} Energy Drink (12oz)"
 
+    # Extract product image URL from promo section
+    image_url = None
+    # Look for img tags near the promo text
+    img_match = re.search(
+        r'<img[^>]+src=["\']([^"\']+)["\'][^>]*(?:alt=["\'][^"\']*(?:' + re.escape(primary_brand) + r'|energy|drink)[^"\']*["\'])?[^>]*>',
+        html,
+        re.IGNORECASE
+    )
+    if img_match:
+        img_src = img_match.group(1)
+        # Handle relative URLs
+        if img_src.startswith('/'):
+            img_src = 'https://locations.vitaminshoppe.com' + img_src
+        image_url = img_src
+
     deals = [
         {
             "brand": primary_brand,
@@ -111,7 +126,8 @@ def direct_scrape_deals() -> dict:
             "deal_price": "$1.00",
             "deal_dates": f"Thursday – Sunday ({deal_dates})",
             "limit": limit,
-            "details": promo_text
+            "details": promo_text,
+            "image_url": image_url
         }
     ]
 
@@ -128,7 +144,8 @@ def direct_scrape_deals() -> dict:
             "deal_price": price,
             "deal_dates": f"Thursday – Sunday ({deal_dates})",
             "limit": limit,
-            "details": "Companion deal"
+            "details": "Companion deal",
+            "image_url": None
         })
 
     return {

@@ -2,13 +2,14 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "Jocko Go",
-      "product_name": "Jocko Go Energy drink",
+      "brand": "Echelon",
+      "product_name": "Echelon Performance Energy Drinks",
       "deal_price": "$1",
-      "deal_dates": "8/27 \u2013 8/30",
+      "deal_dates": "9/3 \u2013 9/6",
       "limit": "6 item maximum",
-      "details": "Plus, $2 Jocko Molk!"
+      "details": "Call stores for availability.",
+      "image_url": "http://rstatic.locations.vitaminshoppe.com/domain/5781_2162_43_ECHELONdollardrink_090326_Rio.jpg"
     }
   ],
-  "updated_at": "2026-08-29T03:32:15.103399"
+  "updated_at": "2026-09-03T16:03:47.149982"
 }

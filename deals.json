@@ -2,14 +2,14 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "Echelon",
-      "product_name": "Echelon Performance Energy Drinks",
+      "brand": "RYSE",
+      "product_name": "RYSE energy drinks",
       "deal_price": "$1",
-      "deal_dates": "9/3 \u2013 9/6",
-      "limit": "6 item maximum",
-      "details": "Call stores for availability",
-      "image_url": "http://rstatic.locations.vitaminshoppe.com/domain/5781_2162_43_ECHELONdollardrink_090326_Rio.jpg"
+      "deal_dates": "9/10 \u2013 9/13",
+      "limit": "6 maximum per item",
+      "details": "Plus, find RYSE protein and pre-workout drinks for only $2.",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2170_44_ONEbranddollarbars_RYSEdollardrinks_RYSE2dollarPWO_091026_Rio.jpg"
     }
   ],
-  "updated_at": "2026-09-04T15:57:37.362944"
+  "updated_at": "2026-09-10T16:04:05.465358"
 }

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  PROTOTYPE — throwaway. Three modern, mobile-friendly variants of the
+  Vitamin Shoppe $1 Dollar Deals page. Switch via ?variant=A|B|C and the
+  floating bottom switcher bar.
+
+  Question: what should a modern, easily readable Dollar Deals page look like —
+  structurally, for mobile devices first?
+    - A: Stack-First (vertical stacking, content-first layout)
+    - B: Grid-Shelf (responsive grid, visual hierarchy)
+    - C: Price-List (compact, scannable price rows)
+
+  Rendered with hardcoded mock data (see the DEALS object in the footer script).
+  Optimized for mobile with responsive enhancements.
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitamin Shoppe $1 Dollar Deals — Mobile Simple Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Figtree:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; }
+
+    .variant-view { display: none; }
+    .variant-view.active { display: block; }
+
+    /* ---- Floating prototype switcher bar (not part of any variant) ---- */
+    .prototype-bar {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99999;
+      background: rgba(10, 13, 18, 0.96);
+      color: #f0f6fc;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 12px;
+      user-select: none;
+      max-width: calc(100vw - 16px);
+      width: max-content;
+    }
+    .proto-badge {
+      background: #f59e0b; color: #000; font-weight: 900; font-size: 8px;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 5px;
+      border-radius: 4px; line-height: 1; white-space: nowrap;
+    }
+    .proto-nav-btn {
+      background: rgba(255,255,255,0.12); color: #fff;
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 50%;
+      width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 13px; font-weight: bold; flex-shrink: 0;
+      transition: background .15s, transform .1s;
+    }
+    .proto-nav-btn:hover { background: rgba(255,255,255,0.26); transform: scale(1.06); }
+    .proto-nav-btn:active { transform: scale(0.94); }
+    .proto-label {
+      font-weight: 700; color: #f8fafc; white-space: nowrap; text-align: center;
+      min-width: 128px; max-width: 180px; overflow: hidden; text-overflow: ellipsis;
+    }
+    .proto-pills { display: flex; gap: 4px; }
+    .proto-pill {
+      background: rgba(255,255,255,0.08); color: #94a3b8; border: 1px solid transparent;
+      padding: 3px 8px; border-radius: 9999px; font-size: 11px; font-weight: 700; cursor: pointer;
+      transition: all .15s ease; white-space: nowrap;
+    }
+    .proto-pill:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    .proto-pill.active {
+      background: #2563eb; color: #fff; border-color: #60a5fa;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.55);
+    }
+    .proto-state {
+      color: #7c8798; font-size: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.16); white-space: nowrap;
+      display: none;
+    }
+    .proto-hint {
+      color: #64748b; font-size: 10px; padding-left: 8px;
+      border-left: 1px solid rgba(255,255,255,0.16); white-space: nowrap; display: none;
+    }
+    @media (min-width: 560px) { .proto-hint { display: inline-block; } }
+    @media (min-width: 800px) { .proto-state { display: inline-block; } }
+
+    /* ---- Mobile-first base styles ---- */
+    body {
+      background: #ffffff;
+      color: #171a1c;
+      font-family: 'Inter', 'IBM Plex Sans', system-ui, sans-serif;
+      line-height: 1.5;
+      padding-bottom: 96px;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ---- Typography ---- */
+    .h1 {
+      font-family: 'Outfit', 'Fraunces', Georgia, serif;
+      font-size: 1.75rem;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #171a1c;
+      margin-bottom: 0.5rem;
+    }
+
+    .h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #171a1c;
+      margin-bottom: 0.75rem;
+    }
+
+    .body-text {
+      font-size: 0.95rem;
+      color: #525b65;
+      line-height: 1.55;
+    }
+
+    .caption {
+      font-size: 0.8rem;
+      color: #7c8798;
+    }
+
+    .price {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #e2332b;
+    }
+
+    .price-small {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e2332b;
+    }
+
+    /* ---- Layout Variants ---- */
+
+    /* Variant A: Stack-First */
+    .stack-first { margin-top: 24px; }
+    .stack-first .deal-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(23, 26, 28, 0.12);
+      margin-bottom: 20px;
+    }
+    .stack-first .deal-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1d3a2f 0%, #2e5d49 48%, #143024 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .stack-first .deal-image::before {
+      content: attr(data-brand);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .stack-first .deal-content {
+      padding: 20px;
+    }
+    .stack-first .deal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .stack-first .deal-meta {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+    .stack-first .meta-chip {
+      background: #f0f2f5;
+      color: #525b65;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+    .stack-first .meta-chip.limit {
+      background: #171a1c;
+      color: #ffffff;
+    }
+    .stack-first .deal-price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e2332b;
+      margin: 16px 0;
+    }
+
+    /* Variant B: Grid-Shelf */
+    .grid-shelf {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .grid-shelf .deal-card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(23, 26, 28, 0.08);
+    }
+    .grid-shelf .deal-image {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, #1d3a2f 0%, #2e5d49 48%, #143024 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .grid-shelf .deal-image::before {
+      content: attr(data-brand);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .grid-shelf .deal-content {
+      padding: 12px;
+    }
+    .grid-shelf .deal-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .grid-shelf .deal-price {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+    .grid-shelf .deal-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .grid-shelf .meta-chip {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+    }
+
+    /* Variant C: Price-List */
+    .price-list {
+      margin: 20px 0;
+    }
+    .price-list .deal-row {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: #ffffff;
+      border-bottom: 1px solid #f0f2f5;
+    }
+    .price-list .deal-row:first-child {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+    .price-list .deal-row:last-child {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    .price-list .deal-rank {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #d4d7db;
+      margin-right: 16px;
+      width: 32px;
+      text-align: center;
+    }
+    .price-list .deal-image {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #1d3a2f 0%, #2e5d49 48%, #143024 100%);
+      border-radius: 8px;
+      margin-right: 16px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .price-list .deal-image::before {
+      content: attr(data-brand);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .price-list .deal-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .price-list .deal-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .price-list .deal-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: #7c8798;
+    }
+    .price-list .deal-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e2332b;
+      margin-left: auto;
+      padding-left: 16px;
+    }
+
+    /* ---- Common Elements ---- */
+    .header {
+      padding: 20px 0 16px;
+      border-bottom: 1px solid #f0f2f5;
+      background: #ffffff;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #7c8798;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #e2332b;
+      color: #ffffff;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #7c8798;
+    }
+
+    /* ---- Desktop Enhancements ---- */
+    @media (min-width: 640px) {
+      .container { max-width: 600px; }
+      .h1 { font-size: 2rem; }
+      .price { font-size: 1.75rem; }
+      .price-small { font-size: 1.3rem; }
+
+      .stack-first .deal-card { margin-bottom: 24px; }
+      .grid-shelf {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 20px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container { max-width: 800px; }
+      .grid-shelf {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="tag">Vitamin Shoppe</div>
+      <h1>Vitamin Shoppe $1 Dollar Deals</h1>
+      <div class="subtitle">Today's Featured Specials</div>
+    </div>
+  </header>
+
+  <!-- ===== VARIANT A: Stack-First ===== -->
+  <section id="view-a" class="variant-view active" aria-label="Variant A: Stack-First">
+    <div class="stack-first">
+      <div class="container">
+        <div class="deal-card">
+          <div class="deal-image" data-brand="Jocko"></div>
+          <div class="deal-content">
+            <div class="deal-title">Jocko GO Energy Drink — 12oz Single</div>
+            <div class="deal-meta">
+              <span class="meta-chip">Thu 9/10 – Sun 9/13</span>
+              <span class="meta-chip limit">Limit 6 per customer</span>
+            </div>
+            <div class="deal-price">$1</div>
+            <div class="body-text">This week's featured $1 energy drink of the week</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VARIANT B: Grid-Shelf ===== -->
+  <section id="view-b" class="variant-view" aria-label="Variant B: Grid-Shelf">
+    <div class="grid-shelf">
+      <div class="deal-card">
+        <div class="deal-image" data-brand="Jocko"></div>
+        <div class="deal-content">
+          <div class="deal-title">Jocko GO Energy Drink — 12oz</div>
+          <div class="deal-meta">
+            <span class="price-small">$1</span>
+            <span class="meta-chip">Lim 6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VARIANT C: Price-List ===== -->
+  <section id="view-c" class="variant-view" aria-label="Variant C: Price-List">
+    <div class="price-list">
+      <div class="container">
+        <div class="deal-row">
+          <div class="deal-rank">1</div>
+          <div class="deal-image" data-brand="Jocko"></div>
+          <div class="deal-info">
+            <div class="deal-title">Jocko GO Energy Drink — 12oz Single</div>
+            <div class="deal-meta">
+              <span>Thu 9/10 – Sun 9/13</span>
+              <span>Lim 6 per customer</span>
+            </div>
+          </div>
+          <div class="deal-price">$1</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="prototype-bar" role="region" aria-label="Prototype variant switcher">
+    <div class="proto-badge">PROTOTYPE</div>
+    <div class="proto-label-wrap">
+      <button class="proto-nav-btn" id="proto-prev" aria-label="Previous variant">‹</button>
+      <div class="proto-label" id="proto-label">Mobile Simple: Stack-First</div>
+      <button class="proto-nav-btn" id="proto-next" aria-label="Next variant">›</button>
+    </div>
+    <div class="proto-pills" id="proto-pills">
+      <button class="proto-pill active" data-variant="a">A</button>
+      <button class="proto-pill" data-variant="b">B</button>
+      <button class="proto-pill" data-variant="c">C</button>
+    </div>
+    <div class="proto-hint" id="proto-hint">Press to switch</div>
+    <div class="proto-state" id="proto-state">Variant A selected</div>
+  </div>
+
+  <script>
+    // Mock deals data
+    const DEALS = {
+      has_active_deal: true,
+      deals: [
+        {
+          id: 1,
+          name: "Jocko GO Energy Drink — 12oz Single",
+          price: "$1",
+          brand: "Jocko",
+          image: "Jocko",
+          date_range: "Thu 9/10 – Sun 9/13",
+          limit: "Limit 6 per customer",
+          companion: { name: "Jocko Molk RTD Protein Shake", price: "$2", limit: "Limit 6 per customer" }
+        }
+      ]
+    };
+
+    let currentVariant = 'a';
+
+    function switchVariant(variant) {
+      // Update active views
+      document.querySelectorAll('.variant-view').forEach(view => {
+        view.classList.remove('active');
+      });
+      const targetView = document.getElementById(`view-${variant}`);
+      if (targetView) targetView.classList.add('active');
+
+      // Update pills
+      document.querySelectorAll('.proto-pill').forEach(pill => {
+        pill.classList.remove('active');
+      });
+      const targetPill = document.querySelector(`.proto-pill[data-variant="${variant}"]`);
+      if (targetPill) targetPill.classList.add('active');
+
+      // Update label and state
+      const label = document.getElementById('proto-label');
+      const state = document.getElementById('proto-state');
+      if (label && state) {
+        const variants = {
+          'a': 'Stack-First',
+          'b': 'Grid-Shelf',
+          'c': 'Price-List'
+        };
+        label.textContent = `Mobile Simple: ${variants[variant] || variant.toUpperCase()}`;
+        state.textContent = `Variant ${variant.toUpperCase()} selected`;
+      }
+
+      currentVariant = variant;
+      console.log(`Switched to variant ${variant}`);
+    }
+
+    // Initialize from URL parameter
+    function initVariant() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const variantParam = urlParams.get('variant');
+      if (variantParam && ['a', 'b', 'c'].includes(variantParam)) {
+        switchVariant(variantParam);
+      }
+    }
+
+    // Navigation
+    document.getElementById('proto-prev').addEventListener('click', () => {
+      const variants = ['a', 'b', 'c'];
+      const currentIndex = variants.indexOf(currentVariant);
+      const prevIndex = (currentIndex - 1 + variants.length) % variants.length;
+      switchVariant(variants[prevIndex]);
+    });
+
+    document.getElementById('proto-next').addEventListener('click', () => {
+      const variants = ['a', 'b', 'c'];
+      const currentIndex = variants.indexOf(currentVariant);
+      const nextIndex = (currentIndex + 1) % variants.length;
+      switchVariant(variants[nextIndex]);
+    });
+
+    // Pill clicks
+    document.querySelectorAll('.proto-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const variant = pill.getAttribute('data-variant');
+        if (variant) switchVariant(variant);
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const variants = ['a', 'b', 'c'];
+        const currentIndex = variants.indexOf(currentVariant);
+        const newIndex = e.key === 'ArrowLeft' 
+          ? (currentIndex - 1 + variants.length) % variants.length
+          : (currentIndex + 1) % variants.length;
+        switchVariant(variants[newIndex]);
+      }
+    });
+
+    // Surface state to console for debugging
+    console.log('Mobile Simple Prototype initialized');
+    console.log('Available variants: A (Stack-First), B (Grid-Shelf), C (Price-List)');
+    console.log('Use arrow keys or click pills to switch variants');
+    console.log('Current variant:', currentVariant);
+
+    // Initialize on page load
+    initVariant();
+
+    // Periodic state logging
+    setInterval(() => {
+      console.log(`State: Variant ${currentVariant} | Timestamp: ${new Date().toISOString()}`);
+    }, 5000);
+  </script>
+</body>
+</html>

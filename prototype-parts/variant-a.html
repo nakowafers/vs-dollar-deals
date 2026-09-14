@@ -1,0 +1,256 @@
+<!-- ===== VARIANT A: Landing Hero ===== -->
+<style>
+  /* ------------------- VARIANT A — "Landing Hero" ------------------- */
+  #view-a {
+    --va-ink: #171a1c;
+    --va-muted: #6b7280;
+    --va-tint: #f6f1e8;
+    --va-accent: #e2332b;
+    --va-card: #ffffff;
+    --va-line: rgba(23, 26, 28, 0.12);
+    min-height: 100vh;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(226, 51, 43, 0.08), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(23, 26, 28, 0.05), transparent 55%),
+      #f6f1e8;
+    color: var(--va-ink);
+    font-family: 'Inter', 'IBM Plex Sans', system-ui, sans-serif;
+    display: block;
+  }
+  #view-a .va-wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 88px 24px 96px;
+  }
+  /* Eyebrow */
+  #view-a .va-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--va-muted);
+    margin-bottom: 20px;
+  }
+  #view-a .va-eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 2px;
+    background: var(--va-accent);
+    flex: 0 0 auto;
+  }
+  /* Headline */
+  #view-a .va-headline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+    line-height: 1.02;
+    font-weight: 560;
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+    margin-bottom: 28px;
+  }
+  /* Hero: giant price + product */
+  #view-a .va-hero {
+    background: var(--va-card);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(23, 26, 28, 0.35);
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  #view-a .va-price-block {
+    padding: 40px 28px 12px;
+  }
+  #view-a .va-price {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(6rem, 22vw, 13rem);
+    line-height: 0.85;
+    font-weight: 580;
+    letter-spacing: -0.04em;
+    color: var(--va-ink);
+  }
+  #view-a .va-price span {
+    font-size: 0.32em;
+    vertical-align: 0.9em;
+    letter-spacing: 0;
+    color: var(--va-accent);
+    font-weight: 560;
+  }
+  #view-a .va-brand {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--va-accent);
+  }
+  #view-a .va-product {
+    font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+    font-weight: 620;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--va-ink);
+    margin-top: 6px;
+  }
+  /* Product image placeholder */
+  #view-a .va-photo {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background:
+      radial-gradient(80% 80% at 68% 28%, rgba(255, 255, 255, 0.25), transparent 55%),
+      linear-gradient(135deg, #1d3a2f 0%, #2e5d49 48%, #143024 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  #view-a .va-photo::before {
+    content: "JG";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(5rem, 28vw, 11rem);
+    font-weight: 560;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: -0.03em;
+  }
+  #view-a .va-photo-caption {
+    position: relative;
+    z-index: 1;
+    padding: 16px 20px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  /* Info chips */
+  #view-a .va-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 28px 30px;
+    border-top: 1px solid var(--va-line);
+  }
+  #view-a .va-chip {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--va-ink);
+    background: var(--va-tint);
+    border-radius: 999px;
+    padding: 10px 16px;
+    line-height: 1;
+  }
+  #view-a .va-chip--limit {
+    color: #fff;
+    background: var(--va-ink);
+  }
+  #view-a .va-details {
+    padding: 0 28px 32px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--va-muted);
+    max-width: 56ch;
+    margin-top: -8px;
+  }
+  /* Companion band */
+  #view-a .va-companion {
+    margin-top: 40px;
+    background: var(--va-ink);
+    color: #fff;
+    border-radius: 20px;
+    padding: 26px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 20px;
+  }
+  #view-a .va-companion-tag {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--va-accent);
+    flex: 0 0 auto;
+  }
+  #view-a .va-companion-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 560;
+    flex: 1 1 220px;
+  }
+  #view-a .va-companion-price {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 580;
+    color: #fff;
+    flex: 0 0 auto;
+  }
+  #view-a .va-companion-meta {
+    flex: 1 1 100%;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  @media (min-width: 720px) {
+    #view-a .va-wrap {
+      padding: 120px 40px 96px;
+    }
+    #view-a .va-hero {
+      grid-template-columns: 1.05fr 1fr;
+    }
+    #view-a .va-price-block {
+      padding: 56px 40px 16px;
+    }
+    #view-a .va-photo {
+      aspect-ratio: auto;
+      min-height: 420px;
+    }
+    #view-a .va-info {
+      padding: 24px 40px 32px;
+    }
+    #view-a .va-details {
+      padding: 0 40px 40px;
+    }
+    #view-a .va-companion {
+      padding: 30px 36px;
+    }
+    #view-a .va-companion-meta {
+      flex: 1 1 auto;
+      padding-left: 200px;
+    }
+  }
+</style>
+<section id="view-a" class="variant-view" aria-label="Variant A: Landing Hero">
+  <div class="va-wrap">
+    <div class="va-eyebrow">Vitamin Shoppe · Dollar Deals</div>
+    <h1 class="va-headline">$1 Energy Drink of the Week</h1>
+
+    <div class="va-hero">
+      <div class="va-price-block">
+        <div class="va-price"><span>$</span>1</div>
+        <div class="va-brand">Jocko GO</div>
+        <div class="va-product">Jocko GO Energy Drink — 12oz Single</div>
+      </div>
+      <div class="va-photo">
+        <span class="va-photo-caption">Jocko GO</span>
+      </div>
+      <div class="va-info">
+        <span class="va-chip">Thu 9/10 – Sun 9/13</span>
+        <span class="va-chip va-chip--limit">Limit 6 per customer</span>
+      </div>
+      <div class="va-details">This week's featured $1 energy drink of the week</div>
+    </div>
+
+    <div class="va-companion">
+      <span class="va-companion-tag">Also this week</span>
+      <span class="va-companion-name">Jocko Molk RTD Protein Shake</span>
+      <span class="va-companion-price">$2</span>
+      <span class="va-companion-meta">Thu 9/10 – Sun 9/13 · Limit 6 per customer</span>
+    </div>
+  </div>
+</section>

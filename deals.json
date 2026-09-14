@@ -1,14 +1,5 @@
 {
-  "has_active_deal": true,
-  "deals": [
-    {
-      "brand": "Jocko Go",
-      "product_name": "Jocko Go Energy drink",
-      "deal_price": "$1",
-      "deal_dates": "8/27 \u2013 8/30",
-      "limit": "6 item maximum",
-      "details": "Plus, $2 Jocko Molk!"
-    }
-  ],
-  "updated_at": "2026-08-29T03:32:15.103399"
+  "has_active_deal": false,
+  "updated_at": "2026-09-02T09:59:40.969776",
+  "deals": []
 }

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitamin Shoppe $1 Dollar Deals — Simple Designs</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', 'IBM Plex Sans', system-ui, sans-serif;
+      background: #f8f9fb;
+      color: #1a1d2e;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* --- Layout containers --- */
+    .layout { max-width: 680px; margin: 0 auto; padding: 32px 24px 40px; }
+    .layout h1 { font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
+    .layout .subtitle { color: #6b7280; font-size: 1.05rem; margin-bottom: 24px; }
+
+    /* --- Cards / Grid cells --- */
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
+    .card h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+    .card .price { font-size: 2.2rem; font-weight: 700; color: #1a1d2e; }
+    .card .meta { display: flex; gap: 12px; font-size: 0.9rem; color: #6b7280; }
+    .card .meta .limit { color: #e63946; font-weight: 700; }
+
+    /* --- List items --- */
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid #f1f3f5;
+    }
+    .list-item:last-child { border-bottom: none; }
+    .list-item .rank { font-size: 1.4rem; font-weight: 700; color: #1a1d2e; }
+    .list-item .brand { font-size: 0.95rem; font-weight: 600; }
+    .list-item .price { font-size: 1.3rem; font-weight: 700; color: #1a1d2e; }
+    .list-item .detail { font-size: 0.85rem; color: #6b7280; }
+
+    /* --- Control bar (floating) --- */
+    .control-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: #1a1d2e;
+      color: #f8f9fb;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(12px);
+      transition: background 0.2s;
+    }
+    .control-bar .btn {
+      background: #fff;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .control-bar .btn:hover { background: #f9fafb; border-color: #cbd5e1; }
+    .control-bar .btn.active { background: #1a1d2e; color: #fff; border-color: #1a1d2e; }
+    .control-bar .info { font-size: 0.75rem; color: #9ca3af; margin-left: auto; }
+
+    /* --- Tag indicator --- */
+    .variant-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #e8e7e9;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    /* --- Responsive tweaks --- */
+    @media (max-width: 540px) {
+      .layout { padding: 16px 12px 32px; }
+      .card { padding: 16px; }
+      .card .price { font-size: 1.6rem; }
+      .control-bar { padding: 8px 12px; gap: 8px; }
+      .control-bar .btn { padding: 6px 12px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+  <h1>Vitamin Shoppe $1 Dollar Deals</h1>
+  <p class="subtitle">Three simple, modern designs — switch to compare</p>
+
+  <!-- Variant tags -->
+  <div class="variant-tag" id="tag-a">A</div>
+  <div class="variant-tag" id="tag-b">B</div>
+  <div class="variant-tag" id="tag-c">C</div>
+
+  <!-- Layout A: Hero / Full-width card -->
+  <section class="layout" id="layout-a">
+    <div class="card">
+      <h2>Jocko GO Energy Drink</h2>
+      <div class="price">$1.00</div>
+      <div class="meta">Thu 9/10 – Sun 9/13 • Limit 6 per customer</div>
+      <p style="color:#6b7280;font-size:0.9rem;">Featured $1 energy drink of the week</p>
+    </div>
+  </section>
+
+  <!-- Layout B: Grid / Shelf -->
+  <section class="layout" id="layout-b">
+    <div class="card">
+      <h2>Jocko GO Energy Drink</h2>
+      <div class="price">$1.00</div>
+      <div class="meta">Thu 9/10 – Sun 9/13 • Limit 6 per customer</div>
+    </div>
+    <div class="card">
+      <h2>Jocko Molk RTD Protein Shake</h2>
+      <div class="price">$2.00</div>
+      <div class="meta">Thu 9/10 – Sun 9/13 • Limit 6 per customer</div>
+    </div>
+  </section>
+
+  <!-- Layout C: List / Ranked -->
+  <section class="layout" id="layout-c">
+    <div class="card">
+      <h2>Ranked Deals</h2>
+      <div class="list-item">
+        <span class="rank">1</span>
+        <span class="brand">Jocko GO Energy Drink</span>
+        <span class="price">$1.00</span>
+        <span class="detail">Thu 9/10 – Sun 9/13</span>
+      </div>
+      <div class="list-item">
+        <span class="rank">2</span>
+        <span class="brand">Jocko Molk RTD</span>
+        <span class="price">$2.00</span>
+        <span class="detail">Thu 9/10 – Sun 9/13</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Floating control bar -->
+<div class="control-bar" id="control-bar">
+  <button class="btn active" data-variant="a">A</button>
+  <button class="btn" data-variant="b">B</button>
+  <button class="btn" data-variant="c">C</button>
+  <span class="info">Active: <strong>A</strong></span>
+</div>
+
+<script>
+  // --- State management ---
+  const variants = { a: 'A', b: 'B', c: 'C' };
+  let current = 'a';
+
+  function showVariant(v) {
+    document.getElementById('layout-'+v).style.display = 'block';
+    document.getElementById('control-bar').querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('control-bar').querySelector('.btn').closest('button').classList.add('active');
+    document.getElementById('control-bar').querySelector('.info').textContent = `Active: ${v}`;
+    current = v;
+  }
+
+  // Initialise
+  showVariant(current);
+
+  // Click handlers
+  document.querySelectorAll('#control-bar .btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const v = btn.dataset.variant;
+      if (v !== current) showVariant(v);
+    });
+  });
+
+  // Log state to console
+  console.log('=== Vitamin Shoppe $1 Dollar Deals Prototype ===');
+  console.log('Variants:', Object.keys(variants));
+  console.log('Current variant:', current);
+</script>
+</body>
+</html>

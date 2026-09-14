@@ -4,378 +4,329 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vitamin Shoppe $1 Dollar Deals</title>
+  <meta name="description" content="This week's Vitamin Shoppe $1 energy drink deals. Updated weekly.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+    html, body { margin: 0; padding: 0; }
+
     body {
-      background-color: #d4d0c8;
-      font-family: 'Geneva', 'Verdana', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #111827;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
     }
 
-    .mac-window {
-      width: 100%;
-      max-width: 340px;
-      border: 2px solid #000;
-      border-radius: 8px 8px 0 0;
-      overflow: hidden;
-      box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
-    }
+    /* ---- Layout ---- */
+    .page { width: 100%; min-height: 100dvh; padding-bottom: 120px; }
+    .container { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; }
 
-    .mac-titlebar {
-      background: linear-gradient(to right, #000080, #1084d0);
-      padding: 6px 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #000;
+    /* ---- Typography ---- */
+    .eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #6b7280;
     }
-
-    .mac-titlebar-text {
-      color: white;
-      font-size: 13px;
-      font-weight: bold;
+    .price {
+      font-family: 'Fraunces', Georgia, serif; font-weight: 700; line-height: 1; letter-spacing: -0.03em;
     }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-    .mac-buttons {
-      display: flex;
-      gap: 5px;
-    }
-
-    .mac-btn {
-      width: 14px;
-      height: 14px;
-      background: #c0c0c0;
-      border: 1px solid #808080;
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #000;
-      cursor: pointer;
-      box-shadow: inset 1px 1px 0 #fff;
-    }
-
-    .mac-card {
-      background: white;
-      border: 2px solid #808080;
-      border-top: none;
-      padding: 20px;
-      box-shadow: inset 1px 1px 0 #dfdfdf;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 2px solid #000;
-      padding-bottom: 10px;
-      margin-bottom: 16px;
-    }
-
-    .header-badge {
-      color: #000080;
-      font-weight: bold;
-    }
-
-    .header-date {
-      color: #804000;
-      font-weight: bold;
-    }
-
-    .product-image-container {
-      background: #f5f5f5;
-      border: 2px solid #808080;
-      border-radius: 4px;
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: inset 1px 1px 0 #fff;
-      text-align: center;
-    }
-
-    .product-image {
-      width: 140px;
-      height: 140px;
-      object-fit: contain;
-      border: 1px dashed #808080;
-      border-radius: 4px;
-      background: #e8e8e8;
-    }
-
-    .product-image-placeholder {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
-      border: 1px dashed #808080;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 12px;
-    }
-
-    .brand-block {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .brand-label {
-      font-size: 11px;
-      color: #666;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .brand-name {
-      font-size: 32px;
-      font-weight: 900;
-      color: #000;
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-
-    .product-subtitle {
-      font-size: 14px;
-      color: #333;
-    }
-
-    .price-container {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .price-frame {
-      display: inline-block;
-      background: #c0c0c0;
-      border: 2px solid #808080;
-      border-radius: 4px;
-      padding: 3px;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #404040;
-    }
-
-    .price-inner {
-      background: white;
-      padding: 12px 32px;
-      border: 1px solid #808080;
-      border-radius: 2px;
-    }
-
-    .price-amount {
-      font-size: 48px;
-      font-weight: 900;
-      color: #000080;
-      line-height: 1;
-    }
-
-    .price-limit {
-      display: block;
-      font-size: 11px;
-      color: #666;
-      text-transform: uppercase;
-      margin-top: 4px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-
-    .companion-deal {
-      background: #f0f0f0;
-      border: 2px solid #808080;
-      border-radius: 4px;
-      padding: 12px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      box-shadow: inset 1px 1px 0 #fff;
-    }
-
-    .companion-name {
-      font-size: 13px;
-      color: #000;
-      font-weight: 500;
-    }
-
-    .companion-price {
-      color: #000080;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
+    /* ---- Buttons ---- */
     .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: #c0c0c0;
-      color: #000;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 14px;
-      border: 2px solid #808080;
-      border-radius: 4px;
-      text-decoration: none;
-      text-transform: uppercase;
-      cursor: pointer;
-      min-height: 44px;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #404040;
-      font-family: inherit;
-      letter-spacing: 0.03em;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 52px; padding: 14px 20px; border-radius: 12px;
+      font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer;
+      border: 0; transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+      .btn:active { transform: translateY(1px); }
+    .btn:focus-visible, a:focus-visible { outline: 2px solid #0a3050; outline-offset: 2px; }
+    .btn-primary { background: #0a3050; color: #fff; box-shadow: 0 8px 20px rgba(10, 48, 80, 0.22); }
+    .btn-primary:hover { background: #08243c; }
+    .btn-secondary { background: transparent; color: #0a3050; border: 1px solid #0a3050; }
+    .btn-secondary:hover { background: #eef3f7; }
+
+    /* ============================
+       CLEAN SCAN STYLES
+       ============================ */
+    .clean-scan { background: #ffffff; color: #111827; }
+
+    .cs-header {
+      background: #fff; border-bottom: 1px solid #e5e7eb;
+      padding: 20px 0 18px;
+    }
+    .cs-header-top {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .cs-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.7rem, 6vw, 2.4rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
+    }
+    .cs-dates {
+      font-size: 12px; font-weight: 700; color: #146c3a; white-space: nowrap;
+      padding: 6px 10px; background: #ecfdf5; border-radius: 999px;
+    }
+    .cs-last-updated {
+      font-size: 11px; color: #6b7280; margin-top: 8px;
     }
 
-    .btn:hover {
-      background: #d0d0d0;
+    .cs-list { margin-top: 16px; }
+
+    .cs-row {
+      display: grid; grid-template-columns: 92px 1fr auto; gap: 14px; align-items: center;
+      padding: 20px 0; border-bottom: 1px solid #e5e7eb;
+    }
+    .cs-row:first-child { border-top: 1px solid #e5e7eb; }
+    .cs-row-featured {
+      background: #0b2e1a; color: #eafff1; border-radius: 14px;
+      margin: 16px -16px 0; padding: 20px 16px; border-bottom: none;
+    }
+    .cs-row-featured + .cs-row { margin-top: 16px; }
+
+    .cs-price {
+      grid-row: 1 / span 2; align-self: center; width: 76px; height: 76px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 12px; background: #101418; color: #fff; font-size: 2rem; letter-spacing: -0.03em;
+    }
+    .cs-row-featured .cs-price { background: #146c3a; color: #fff; }
+
+    .cs-brand {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6b7280; margin-bottom: 4px;
+    }
+    .cs-row-featured .cs-brand { color: rgba(234, 255, 241, 0.7); }
+
+    .cs-name { font-size: 1.05rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+
+    .cs-meta { font-size: 0.86rem; color: #6b7280; margin-top: 4px; }
+    .cs-row-featured .cs-meta { color: rgba(234, 255, 241, 0.7); }
+
+    .cs-limit { font-size: 12px; font-weight: 700; color: #146c3a; margin-top: 8px; }
+    .cs-row-featured .cs-limit { color: #86efac; }
+
+    .cs-actions { grid-column: 1 / -1; display: flex; gap: 10px; margin-top: 4px; }
+    .cs-actions .btn { flex: 1; min-height: 48px; font-size: 14px; border-radius: 10px; }
+
+    .cs-summary {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 20px; padding: 14px 0; border-top: 2px solid #111827;
+    }
+    .cs-summary-label { font-size: 14px; font-weight: 700; }
+    .cs-summary-total {
+      font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 700; color: #0b7a3b;
     }
 
-    .btn:active {
-      box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #404040;
+    /* ---- Empty State ---- */
+    .empty-state {
+      text-align: center; padding: 60px 20px; color: #6b7280;
     }
-
-    .btn-secondary {
-      background: #c0c0c0;
-      font-weight: 500;
+    .empty-state .eyebrow { margin-bottom: 16px; display: inline-block; }
+    .empty-state h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 700; line-height: 1.2; margin: 16px 0 12px;
     }
+    .empty-state p { font-size: 1rem; max-width: 40ch; margin: 0 auto 24px; }
+    .empty-state .btn { min-width: 200px; }
 
-    .btn:focus-visible, .mac-btn:focus-visible {
-      outline: 2px solid #000080;
-      outline-offset: 2px;
+    /* ---- Footer / Attribution ---- */
+    .footer {
+      margin-top: 40px; padding: 20px 0; text-align: center;
+      font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb;
+    }
+    .footer a { color: #0a3050; text-decoration: none; font-weight: 600; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 480px) {
+      .cs-row { grid-template-columns: 72px 1fr; }
+      .cs-price { width: 64px; height: 64px; font-size: 1.6rem; }
+      .cs-row-featured { margin: 16px -12px 0; padding: 16px 12px; }
+      .cs-actions { flex-direction: column; }
+      .cs-actions .btn { width: 100%; }
     }
   </style>
 </head>
-<body>
+<body class="clean-scan">
 
-  <main class="mac-window">
-    <div class="mac-titlebar">
-      <span class="mac-titlebar-text">$1 Dollar Deals</span>
-      <div class="mac-buttons" aria-hidden="true">
-        <span class="mac-btn">−</span>
-        <span class="mac-btn">□</span>
-        <span class="mac-btn">×</span>
-      </div>
-    </div>
+  <div class="page">
+    <div class="container">
 
-    <div class="mac-card">
-      <div class="card-header">
-        <span class="header-badge">★ WEEKEND DROP ★</span>
-        <span id="dealDatesBadge" class="header-date">THU–SUN</span>
-      </div>
-
-      <div class="product-image-container">
-        <img id="productImage" class="product-image" src="" alt="Product image" style="display: none;">
-        <div id="productImagePlaceholder" class="product-image-placeholder">[ Product Image ]</div>
-      </div>
-
-      <div class="brand-block">
-        <p class="brand-label">THE VITAMIN SHOPPE</p>
-        <h1 id="brandName" class="brand-name">JOCKO GO</h1>
-        <p id="productSubtitle" class="product-subtitle">Clean Energy & Focus Drink (12 oz)</p>
-      </div>
-
-      <div class="price-container">
-        <div class="price-frame">
-          <div class="price-inner">
-            <span id="dealPrice" class="price-amount">$1.00</span>
-            <span id="dealLimitText" class="price-limit">PER CAN · LIMIT 6 / DAY</span>
-          </div>
+      <!-- Header -->
+      <header class="cs-header">
+        <div class="cs-header-top">
+          <div class="eyebrow">Vitamin Shoppe</div>
+          <h1 class="cs-title">Dollar Deals</h1>
+          <time id="deal-dates" class="cs-dates" datetime="">—</time>
         </div>
+        <p id="last-updated" class="cs-last-updated" aria-live="polite"></p>
+      </header>
+
+      <!-- Deal List -->
+      <div id="deal-list" class="cs-list" role="list" aria-label="Current dollar deals">
+        <!-- Hydrated by JS -->
       </div>
 
-      <div class="companion-deal">
-        <span id="companionText" class="companion-name">🥛 Jocko Molk RTD Shake</span>
-        <span class="companion-price">$2.00</span>
+      <!-- Empty State (hidden by default) -->
+      <div id="empty-state" class="empty-state" hidden>
+        <div class="eyebrow">Vitamin Shoppe</div>
+        <h1>No active deals this week</h1>
+        <p>Check back Thursday for the next $1 energy drink drop. Deals run Thursday through Sunday.</p>
+        <a href="https://www.vitaminshoppe.com" target="_blank" rel="noopener" class="btn btn-primary">Browse Vitamin Shoppe</a>
       </div>
 
-      <div class="actions">
-        <a id="findStoreLink" href="https://www.vitaminshoppe.com/search?search=Jocko%20Go%20Energy%20Drink" target="_blank" class="btn">
-          <span>Find in Store / Online</span>
-          <span>↗</span>
-        </a>
-        <button id="copyShareBtn" class="btn btn-secondary">
-          <span id="copyBtnLabel">📋 Copy Deal to Share</span>
-        </button>
+      <!-- Summary (only shown when deals exist) -->
+      <div id="summary" class="cs-summary" hidden>
+        <span class="cs-summary-label"><span id="deal-count">0</span> offers available</span>
+        <span class="cs-summary-total">from <span id="min-price">$1</span></span>
       </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>Data sourced from <a href="https://locations.vitaminshoppe.com/" target="_blank" rel="noopener">Vitamin Shoppe locations</a> · Updated weekly</p>
+      </footer>
     </div>
-  </main>
+  </div>
 
   <script>
-    async function loadDealsData() {
-      try {
-        const res = await fetch('deals.json');
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data && data.deals && data.deals.length > 0) {
-          const primary = data.deals[0];
-          const productName = primary.product_name || `${primary.brand} Energy Drink`;
-          
-          document.getElementById('brandName').innerText = primary.brand || 'JOCKO GO';
-          document.getElementById('productSubtitle').innerText = productName;
-          document.getElementById('dealPrice').innerText = primary.deal_price || '$1.00';
-          if (primary.limit) document.getElementById('dealLimitText').innerText = `PER CAN · ${primary.limit.toUpperCase()}`;
-          if (primary.deal_dates) document.getElementById('dealDatesBadge').innerText = primary.deal_dates;
-
-          const searchUrl = `https://www.vitaminshoppe.com/search?search=${encodeURIComponent(productName)}`;
-          document.getElementById('findStoreLink').href = searchUrl;
-
-          const img = document.getElementById('productImage');
-          const placeholder = document.getElementById('productImagePlaceholder');
-          if (primary.image_url) {
-            img.src = primary.image_url;
-            img.alt = `${primary.brand} product image`;
-            img.onload = function() {
-              img.style.display = 'block';
-              placeholder.style.display = 'none';
-            };
-            img.onerror = function() {
-              img.style.display = 'none';
-              placeholder.style.display = 'flex';
-            };
-          }
-
-          if (data.deals.length > 1) {
-            const secondary = data.deals[1];
-            document.getElementById('companionText').innerText = `🥛 ${secondary.product_name || secondary.brand}`;
-          }
+    (function() {
+      // Fetch and hydrate deals from deals.json
+      async function loadDeals() {
+        try {
+          const res = await fetch('deals.json?t=' + Date.now());
+          if (!res.ok) throw new Error('Failed to load deals.json');
+          const data = await res.json();
+          hydrate(data);
+        } catch (err) {
+          console.error('Deal load error:', err);
+          showEmptyState();
         }
-      } catch (e) {
-        console.log("Using default preset deal data.");
       }
-    }
 
-    document.getElementById('copyShareBtn').addEventListener('click', () => {
-      const brand = document.getElementById('brandName').innerText;
-      const price = document.getElementById('dealPrice').innerText;
-      const text = `The Vitamin Shoppe $1 Weekend Deal: ${brand} for ${price}! (Limit 6)`;
-      navigator.clipboard.writeText(text).then(() => {
-        const label = document.getElementById('copyBtnLabel');
-        label.innerText = '✓ Copied to Clipboard!';
-        setTimeout(() => { label.innerText = '📋 Copy Deal to Share'; }, 2000);
-      }).catch(() => {
-        alert('Copy this deal: ' + text);
-      });
-    });
+      function hydrate(data) {
+        const list = document.getElementById('deal-list');
+        const empty = document.getElementById('empty-state');
+        const summary = document.getElementById('summary');
+        const datesEl = document.getElementById('deal-dates');
+        const updatedEl = document.getElementById('last-updated');
+        const countEl = document.getElementById('deal-count');
+        const minPriceEl = document.getElementById('min-price');
 
-    loadDealsData();
+        if (!data.has_active_deal || !data.deals?.length) {
+          showEmptyState();
+          return;
+        }
+
+        // Show deals, hide empty state
+        empty.hidden = true;
+        summary.hidden = false;
+        list.innerHTML = '';
+
+        // Header dates from first deal
+        const firstDeal = data.deals[0];
+        datesEl.textContent = firstDeal.deal_dates || 'Thu–Sun';
+        datesEl.dateTime = firstDeal.deal_dates || '';
+
+        // Last updated
+        if (data.updated_at) {
+          const dt = new Date(data.updated_at);
+          updatedEl.textContent = 'Updated ' + dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // Summary
+        countEl.textContent = data.deals.length;
+        const prices = data.deals.map(d => parseFloat(d.deal_price?.replace(/[^\d.]/g, '')) || 0);
+        minPriceEl.textContent = '$' + Math.min(...prices).toFixed(2);
+
+        // Render each deal
+        data.deals.forEach((deal, idx) => {
+          const isFeatured = idx === 0;
+          const row = document.createElement('div');
+          row.className = 'cs-row' + (isFeatured ? ' cs-row-featured' : '');
+          row.setAttribute('role', 'listitem');
+
+          const priceNum = deal.deal_price?.replace(/[^\d.]/g, '') || '1';
+          const searchUrl = 'https://www.vitaminshoppe.com/search?search=' + encodeURIComponent(deal.product_name || deal.brand || 'energy drink');
+
+          // Price block
+          const priceEl = document.createElement('div');
+          priceEl.className = 'cs-price';
+          priceEl.setAttribute('aria-hidden', 'true');
+          priceEl.textContent = '$' + priceNum;
+          row.appendChild(priceEl);
+
+          // Info column
+          const infoEl = document.createElement('div');
+          ['brand', 'product_name', 'details', 'limit'].forEach((key, i) => {
+            const div = document.createElement('div');
+            div.className = i === 0 ? 'cs-brand' : i === 1 ? 'cs-name' : i === 2 ? 'cs-meta' : 'cs-limit';
+            let text = deal[key] || (key === 'brand' ? 'Featured' : key === 'product_name' ? deal.brand + ' Energy Drink' : key === 'limit' ? 'Limit 6 per customer' : '');
+            div.textContent = text;
+            infoEl.appendChild(div);
+          });
+          row.appendChild(infoEl);
+
+          // Actions
+          const actionsEl = document.createElement('div');
+          actionsEl.className = 'cs-actions';
+          
+          const findLink = document.createElement('a');
+          findLink.href = searchUrl;
+          findLink.target = '_blank';
+          findLink.rel = 'noopener';
+          findLink.className = 'btn ' + (isFeatured ? 'btn-primary' : 'btn-secondary');
+          findLink.textContent = 'Find in Store';
+          actionsEl.appendChild(findLink);
+
+          if (isFeatured) {
+            const shareBtn = document.createElement('button');
+            shareBtn.type = 'button';
+            shareBtn.className = 'btn btn-secondary share-btn';
+            shareBtn.dataset.url = searchUrl;
+            shareBtn.dataset.title = deal.product_name || deal.brand + ' Energy Drink';
+            shareBtn.textContent = 'Share';
+            actionsEl.appendChild(shareBtn);
+          }
+
+          row.appendChild(actionsEl);
+          list.appendChild(row);
+        });
+
+        // Wire up share buttons
+        list.querySelectorAll('.share-btn').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const url = btn.dataset.url;
+            const title = btn.dataset.title;
+            if (navigator.share) {
+              try { await navigator.share({ title: title + ' - Vitamin Shoppe Deal', url }); } catch {}
+            } else {
+              await navigator.clipboard.writeText(url);
+              const original = btn.textContent;
+              btn.textContent = 'Copied!';
+              setTimeout(() => btn.textContent = original, 1500);
+            }
+          });
+        });
+      }
+
+      function showEmptyState() {
+        document.getElementById('deal-list').innerHTML = '';
+        document.getElementById('empty-state').hidden = false;
+        document.getElementById('summary').hidden = true;
+        document.getElementById('deal-dates').textContent = '—';
+        document.getElementById('last-updated').textContent = '';
+      }
+
+      // Load on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadDeals);
+      } else {
+        loadDeals();
+      }
+    })();
   </script>
 </body>
 </html>

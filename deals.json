@@ -1,5 +1,15 @@
 {
-  "has_active_deal": false,
-  "updated_at": "2026-09-02T09:59:40.969776",
-  "deals": []
+  "has_active_deal": true,
+  "deals": [
+    {
+      "brand": "RYSE",
+      "product_name": "RYSE Energy Drinks",
+      "deal_price": "$1",
+      "deal_dates": "9/10 \u2013 9/13",
+      "limit": "6 maximum per item",
+      "details": "Get your must-have RYSE energy drinks for just a buck. Plus, find RYSE protein and pre-workout drinks for only $2.",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2170_44_ONEbranddollarbars_RYSEdollardrinks_RYSE2dollarPWO_091026_Rio.jpg"
+    }
+  ],
+  "updated_at": "2026-09-11T16:05:03.698123"
 }

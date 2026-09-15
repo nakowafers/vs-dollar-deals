@@ -50,7 +50,7 @@
     .btn-secondary { background: transparent; color: #0a3050; border: 1px solid #0a3050; }
     .btn-secondary:hover { background: #eef3f7; }
 
-    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.8); }
     .btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
     .btn-ghost:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
@@ -289,7 +289,7 @@
           if (isFeatured) {
             const shareBtn = document.createElement('button');
             shareBtn.type = 'button';
-            shareBtn.className = 'btn btn-ghost share-btn';
+            shareBtn.setAttribute('aria-label', 'Share this deal');
             shareBtn.dataset.url = searchUrl;
             shareBtn.dataset.title = deal.product_name || deal.brand + ' Energy Drink';
             shareBtn.textContent = 'Share';

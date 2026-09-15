@@ -99,6 +99,9 @@
     }
     .cs-row-featured .cs-price { background: #146c3a; color: #fff; }
 
+    .cs-thumb { width: 48px; height: 48px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+    .cs-brand-row { display: flex; gap: 8px; align-items: center; }
+
     .cs-brand {
       font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6b7280; margin-bottom: 4px;
     }
@@ -106,7 +109,7 @@
 
     .cs-name { font-size: 1.05rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
 
-    .cs-meta { font-size: 0.86rem; color: #6b7280; margin-top: 4px; }
+    .cs-meta { font-size: 0.86rem; color: #6b7280; margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .cs-row-featured .cs-meta { color: rgba(234, 255, 241, 0.7); }
 
     .cs-limit { font-size: 12px; font-weight: 700; color: #146c3a; margin-top: 8px; }
@@ -146,10 +149,11 @@
     .footer a:hover { text-decoration: underline; }
 
     /* ---- Responsive ---- */
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
+      .page { padding-bottom: 64px; }
       .cs-row { grid-template-columns: 72px 1fr; }
       .cs-price { width: 64px; height: 64px; font-size: 1.6rem; }
-      .cs-row-featured { margin: 16px -12px 0; padding: 16px 12px; }
+      .cs-row-featured { margin: 16px -16px 0; padding: 16px 16px; }
       .cs-actions { flex-direction: column; }
       .cs-actions .btn { width: 100%; }
     }
@@ -265,13 +269,42 @@
 
           // Info column
           const infoEl = document.createElement('div');
-          ['brand', 'product_name', 'details', 'limit'].forEach((key, i) => {
+
+          // Brand and thumbnail wrapper
+          const brandImageWrapper = document.createElement('div');
+          brandImageWrapper.className = 'cs-brand-row';
+
+          const brandDiv = document.createElement('div');
+          brandDiv.className = 'cs-brand';
+          brandDiv.textContent = deal.brand || 'Featured';
+          brandImageWrapper.appendChild(brandDiv);
+
+          // Add thumbnail if image_url exists
+          if (deal.image_url) {
+            const imgEl = document.createElement('img');
+            imgEl.className = 'cs-thumb';
+            imgEl.src = deal.image_url;
+            imgEl.alt = deal.product_name || (deal.brand + ' Energy Drink');
+            imgEl.loading = 'lazy';
+            imgEl.width = 48;
+            imgEl.height = 48;
+            brandImageWrapper.appendChild(imgEl);
+          }
+
+          infoEl.appendChild(brandImageWrapper);
+
+          // Product name, details, limit
+          [
+            { key: 'product_name', cls: 'cs-name', fallback: deal.brand + ' Energy Drink' },
+            { key: 'details', cls: 'cs-meta', fallback: '' },
+            { key: 'limit', cls: 'cs-limit', fallback: 'Limit 6 per customer' },
+          ].forEach(({ key, cls, fallback }) => {
             const div = document.createElement('div');
-            div.className = i === 0 ? 'cs-brand' : i === 1 ? 'cs-name' : i === 2 ? 'cs-meta' : 'cs-limit';
-            let text = deal[key] || (key === 'brand' ? 'Featured' : key === 'product_name' ? deal.brand + ' Energy Drink' : key === 'limit' ? 'Limit 6 per customer' : '');
-            div.textContent = text;
+            div.className = cls;
+            div.textContent = deal[key] || fallback;
             infoEl.appendChild(div);
           });
+
           row.appendChild(infoEl);
 
           // Actions

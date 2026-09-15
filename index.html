@@ -292,7 +292,7 @@
             shareBtn.setAttribute('aria-label', 'Share this deal');
             shareBtn.dataset.url = searchUrl;
             shareBtn.dataset.title = deal.product_name || deal.brand + ' Energy Drink';
-            shareBtn.textContent = 'Share';
+            shareBtn.className = 'btn btn-ghost';
             actionsEl.appendChild(shareBtn);
           }
 

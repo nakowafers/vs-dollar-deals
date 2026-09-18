@@ -3,13 +3,13 @@
   "deals": [
     {
       "brand": "Alani Nu",
-      "product_name": "Alani Nu Energy Drinks",
+      "product_name": "Alani Nu Energy Drink",
       "deal_price": "$1",
       "deal_dates": "9/17 \u2013 9/20",
       "limit": "6 item maximum",
-      "details": "Sip your way to refreshing energy with Alani Nu energy drinks for just $1!",
+      "details": "",
       "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2176_14_NewNeedNow_082426_Rio.jpg"
     }
   ],
-  "updated_at": "2026-09-17T16:33:22.338827"
+  "updated_at": "2026-09-18T16:01:54.435897"
 }

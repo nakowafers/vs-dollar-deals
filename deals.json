@@ -2,14 +2,14 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "Alani Nu",
-      "product_name": "Alani Nu Energy Drink",
+      "brand": "Jocko GO",
+      "product_name": "Jocko GO Energy Drink",
       "deal_price": "$1",
-      "deal_dates": "9/17 \u2013 9/20",
+      "deal_dates": "September 25 \u2013 September 27",
       "limit": "6 item maximum",
-      "details": "",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2176_14_NewNeedNow_082426_Rio.jpg"
+      "details": "$2 companion deals available on select products.",
+      "image_url": "https://www.vitaminshoppe.com/domain/featured-jocko-energy-drink.jpg"
     }
   ],
-  "updated_at": "2026-09-18T16:01:54.435897"
+  "updated_at": "2026-09-24T16:46:47.616765"
 }

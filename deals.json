@@ -2,14 +2,23 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "Jocko GO",
-      "product_name": "Jocko GO Energy Drink",
+      "brand": "Featured Energy Drink",
+      "product_name": "Energy Drink Name",
       "deal_price": "$1",
-      "deal_dates": "September 25 \u2013 September 27",
+      "deal_dates": "8/28 \u2013 8/30",
       "limit": "6 item maximum",
-      "details": "$2 companion deals available on select products.",
-      "image_url": "https://www.vitaminshoppe.com/domain/featured-jocko-energy-drink.jpg"
+      "details": "Enjoy $1 energy drinks during our weekend promotion.",
+      "image_url": "https://example.com/image-url.jpg"
+    },
+    {
+      "brand": "Companion Drink Brand",
+      "product_name": "Companion Drink Name",
+      "deal_price": "$2",
+      "deal_dates": "8/28 \u2013 8/30",
+      "limit": "6 item maximum",
+      "details": "Get companion drinks for just $2.",
+      "image_url": "https://example.com/companion-image-url.jpg"
     }
   ],
-  "updated_at": "2026-09-24T16:46:47.616765"
+  "updated_at": "2026-09-25T16:48:46.823536"
 }

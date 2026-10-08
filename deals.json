@@ -2,23 +2,14 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "C4",
-      "product_name": "C4 Energy Drink",
+      "brand": "BUM Energy",
+      "product_name": "BUM Energy cans",
       "deal_price": "$1",
-      "deal_dates": "10/1 \u2013 10/4",
-      "limit": "6 item maximum per brand",
+      "deal_dates": "10/8 \u2013 10/11",
+      "limit": "6 item maximum",
       "details": "",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2186_43_DollarDrinks_C4_3D_LuckyGummies_100126_Rio.jpg"
-    },
-    {
-      "brand": "3D",
-      "product_name": "3D Energy Drink",
-      "deal_price": "$1",
-      "deal_dates": "10/1 \u2013 10/4",
-      "limit": "6 item maximum per brand",
-      "details": "",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2186_43_DollarDrinks_C4_3D_LuckyGummies_100126_Rio.jpg"
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2189_03_SameDayDelivery_042726_Rio.jpg"
     }
   ],
-  "updated_at": "2026-10-02T17:37:49.682686"
+  "updated_at": "2026-10-08T18:38:00.484406"
 }

@@ -2,14 +2,14 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "BUM Energy",
-      "product_name": "BUM Energy Cans",
+      "brand": "GHOST",
+      "product_name": "GHOST\u00ae Hydration",
       "deal_price": "$1",
-      "deal_dates": "10/8 \u2013 10/11",
+      "deal_dates": "Weekend",
       "limit": "6 item maximum",
-      "details": "",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2193_44_DollarDrinks_BumANDBuilt_100826_Rio.jpg"
+      "details": "Grab tasty, 0 sugar GHOST\u00ae Hydration drinks",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2197_26_Barebells_BOGO50_101226_Rio.jpg"
     }
   ],
-  "updated_at": "2026-10-09T18:06:51.125549"
+  "updated_at": "2026-10-15T16:34:26.868370"
 }

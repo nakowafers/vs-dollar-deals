@@ -2,14 +2,23 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "GHOST",
-      "product_name": "GHOST\u00ae Hydration",
+      "brand": "Celsius",
+      "product_name": "Celsius Essential Energy",
       "deal_price": "$1",
-      "deal_dates": "Weekend Promotion",
+      "deal_dates": "10/22\u201310/25",
       "limit": "6 item maximum",
-      "details": "Grab tasty, 0 sugar GHOST\u00ae Hydration drinks",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2196_45_DollarDrinks_GHOST_101526_Rio.jpg"
+      "details": "Fuel your day for less with Celsius essential energy.",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2200_46_DollarDrinks_Celsius_LuckyEnergy_102226_Rio.jpg"
+    },
+    {
+      "brand": "Lucky Energy",
+      "product_name": "Lucky Energy Gummies",
+      "deal_price": "$2",
+      "deal_dates": "10/22\u201310/25",
+      "limit": "6 item maximum",
+      "details": "Lucky you\u2014Lucky Energy gummies are on sale!",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2203_47_DollarWeekend_LuckyEnergy_102226_Rio.jpg"
     }
   ],
-  "updated_at": "2026-10-16T16:17:21.230062"
+  "updated_at": "2026-10-22T16:51:59.134910"
 }

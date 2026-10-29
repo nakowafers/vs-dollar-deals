@@ -2,14 +2,23 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "Celsius",
-      "product_name": "Celsius Essential Energy",
+      "brand": "DryWater",
+      "product_name": "DryWater\u00ae packs",
       "deal_price": "$1",
-      "deal_dates": "10/22\u201310/25",
+      "deal_dates": "10/29\u201311/01",
       "limit": "6 item maximum",
-      "details": "Fuel your day for less with Celsius essential energy.",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2200_46_DollarDrinks_Celsius_LuckyEnergy_102226_Rio.jpg"
+      "details": "No-water-needed hydration packs for on-the-go.",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2208_08_AlaniNuRTDS_BOGO50_102626_Rio.jpg"
+    },
+    {
+      "brand": "C4",
+      "product_name": "C4 Energy Drink",
+      "deal_price": "$2",
+      "deal_dates": "10/29\u201311/01",
+      "limit": "6 item maximum",
+      "details": "Companion deal on C4 energy drinks.",
+      "image_url": "https://example.com/c4-drink.jpg"
     }
   ],
-  "updated_at": "2026-10-23T16:41:00.866517"
+  "updated_at": "2026-10-29T18:13:18.662483"
 }

@@ -7,18 +7,9 @@
       "deal_price": "$1",
       "deal_dates": "10/29\u201311/01",
       "limit": "6 item maximum",
-      "details": "No-water-needed hydration packs for on-the-go.",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2208_08_AlaniNuRTDS_BOGO50_102626_Rio.jpg"
-    },
-    {
-      "brand": "C4",
-      "product_name": "C4 Energy Drink",
-      "deal_price": "$2",
-      "deal_dates": "10/29\u201311/01",
-      "limit": "6 item maximum",
-      "details": "Companion deal on C4 energy drinks.",
-      "image_url": "https://example.com/c4-drink.jpg"
+      "details": "No-water-needed packs for on-the-go hydration.",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2209_46_WeekendEvent_DryWaterEHP_102926_Rio.jpg"
     }
   ],
-  "updated_at": "2026-10-29T18:13:18.662483"
+  "updated_at": "2026-10-30T17:49:22.198111"
 }

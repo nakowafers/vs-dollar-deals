@@ -3,22 +3,13 @@
   "deals": [
     {
       "brand": "Jocko Fuel",
-      "product_name": "Jocko Fuel energy cans",
+      "product_name": "Jocko Fuel Energy Cans",
       "deal_price": "$1",
       "deal_dates": "11/5 \u2013 11/8",
       "limit": "6 item maximum",
-      "details": "Grab your favorite Jocko Fuel energy cans for just $1. Plus, M\u00f6lk protein shakes are only $2.",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2215_35_Jocko1DollarEnergy_2dollarMOLKweekend_110526_Rio.jpg"
-    },
-    {
-      "brand": "M\u00f6lk",
-      "product_name": "M\u00f6lk protein shakes",
-      "deal_price": "$2",
-      "deal_dates": "11/5 \u2013 11/8",
-      "limit": "6 item maximum",
       "details": "M\u00f6lk protein shakes are only $2.",
-      "image_url": ""
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2215_35_Jocko1DollarEnergy_2dollarMOLKweekend_110526_Rio.jpg"
     }
   ],
-  "updated_at": "2026-11-05T19:41:10.821420"
+  "updated_at": "2026-11-06T19:01:51.131751"
 }

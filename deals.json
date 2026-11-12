@@ -2,14 +2,14 @@
   "has_active_deal": true,
   "deals": [
     {
-      "brand": "Jocko Fuel",
-      "product_name": "Jocko Fuel Energy Cans",
+      "brand": "GHOST",
+      "product_name": "GHOST\u00ae Hydration singles",
       "deal_price": "$1",
-      "deal_dates": "11/5 \u2013 11/8",
+      "deal_dates": "11/12 \u2013 11/15",
       "limit": "6 item maximum",
-      "details": "M\u00f6lk protein shakes are only $2.",
-      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2215_35_Jocko1DollarEnergy_2dollarMOLKweekend_110526_Rio.jpg"
+      "details": "Load up on electrolytes, not sugar.",
+      "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2224_36_1dollarGHOSTSingleDrinks_111226_Rio.jpg"
     }
   ],
-  "updated_at": "2026-11-06T19:01:51.131751"
+  "updated_at": "2026-11-12T19:41:25.534202"
 }

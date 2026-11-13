@@ -3,7 +3,7 @@
   "deals": [
     {
       "brand": "GHOST",
-      "product_name": "GHOST\u00ae Hydration singles",
+      "product_name": "GHOST\u00ae Hydration Singles",
       "deal_price": "$1",
       "deal_dates": "11/12 \u2013 11/15",
       "limit": "6 item maximum",
@@ -11,5 +11,5 @@
       "image_url": "https://rstatic.locations.vitaminshoppe.com/domain/5781_2224_36_1dollarGHOSTSingleDrinks_111226_Rio.jpg"
     }
   ],
-  "updated_at": "2026-11-12T19:41:25.534202"
+  "updated_at": "2026-11-13T19:21:48.029587"
 }
